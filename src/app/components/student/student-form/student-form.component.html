@@ -1,0 +1,59 @@
+<main id="main" class="main my-5 py-5">
+  <div class="container">
+    <div class="students">
+      <div class="row">
+        <div class="col-12 pb-5">
+          <h1 class="m-0 float-left">Add New Students</h1>
+        </div>
+        <div class="col-12">
+          <form class="row" [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentName">Name</label>
+                <input type="text" formControlName="name" name="studentName" id="studentName" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentAge">Age</label>
+                <input type="text" formControlName="age" name="studentAge" id="studentAge" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentClass">Class</label>
+                <input type="text" formControlName="class" name="studentClass" id="studentClass" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentSection">Section</label>
+                <input type="text" formControlName="section" name="studentSection" id="studentSection" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentSection">Course</label>
+                <select class="form-control" formControlName="courseId" required>
+                  <option id="none" hidden>Select Course</option>
+                  <option *ngFor="let course of courses" value="{{ course.id }}">{{ course.name }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="form-group">
+                <label for="studentAddress">Address</label>
+                <input type="text" formControlName="address" name="studentAddress" id="studentAddress" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-block btn-outline-success">{{ studentId ? 'Save Student' : 'Add Student' }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
