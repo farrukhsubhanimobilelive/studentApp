@@ -23,6 +23,11 @@ export class StudentService {
     return this.http.get<Student[]>(this.url);
   }
 
+  deleteStudent(id: number): Observable<Student[]> {
+    this.url = `${API_URL}/students/${id}`;
+    return this.http.delete<Student[]>(this.url);
+  }
+
   addStudent(student: Student): Observable<Student> {
     this.url = `${API_URL}/students`;
     return this.http.post<Student>(this.url, student);
@@ -31,10 +36,5 @@ export class StudentService {
   editStudent(student: any, studentId: number): Observable<Student> {
     this.url = `${API_URL}/students/${studentId}`;
     return this.http.put<Student>(this.url, student);
-  }
-
-  deleteStudent(id: number): Observable<Student[]> {
-    this.url = `${API_URL}/students/${id}`;
-    return this.http.delete<Student[]>(this.url);
   }
 }

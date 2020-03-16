@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../models/course';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Course } from '../models/course';
 
 const API_URL = 'https://sis-rest-api.herokuapp.com/api';
 
