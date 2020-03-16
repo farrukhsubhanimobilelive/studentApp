@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { StudentService } from '../../../services/student.service';
 import { Student } from '../../../models/student';
 
@@ -14,6 +13,7 @@ export class StudentDetailComponent implements OnInit {
 
   constructor(
     private studentService: StudentService,
+    private router: Router,
     private route: ActivatedRoute
     ) { }
 
@@ -29,6 +29,13 @@ export class StudentDetailComponent implements OnInit {
           return this.student = studentResponse;
         }
       }
+    });
+  }
+
+  deleteStudent(student: Student): void {
+    this.studentService.deleteStudent(student.id).subscribe(() => {
+      alert(`Student ${student.name} Deleted Successfully!`);
+      this.router.navigate(['/students']);
     });
   }
 }

@@ -32,4 +32,9 @@ export class StudentService {
     this.url = `${API_URL}/students/${studentId}`;
     return this.http.put<Student>(this.url, student);
   }
+
+  deleteStudent(id: number): Observable<Student[]> {
+    this.url = `${API_URL}/students/${id}`;
+    return this.http.delete<Student[]>(this.url);
+  }
 }

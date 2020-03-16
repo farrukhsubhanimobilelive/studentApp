@@ -8,18 +8,18 @@
         </div>
         <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let student of students">
           <div class="student py-3">
-            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: {{ student.name }}</h2>
-            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Course: {{ student.course ? student.course.name : 'N/A' }}</h3>
+            <h2 class="m-0" style="font-size: 1.2rem;">Name: {{ student.name }}</h2>
+            <h3 class="m-0 text-secondary border-bottom pb-3 " style="font-size: 1rem;">Course: {{ student.course ? student.course.name : 'N/A' }}</h3>
             <ul class="d-flex justify-content-between m-0 py-3 list-unstyled">
               <li>Age: {{ student.age }}</li>
               <li>Class: {{ student.class }}</li>
               <li>Section: {{ student.section }}</li>
             </ul>
             <address class="mb-3">Address: {{ student.address }}</address>
-            <div class="d-flex justify-content-between border-top pt-4">
+            <div class="d-flex justify-content-between border-top border-bottom pt-2 pb-2">
               <a routerLink="/students/student-detail/{{ student.id }}" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa-eye">View</a>
               <a routerLink="/students/edit-student/{{ student.id }}" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
-              <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
+              <a (click)="deleteStudent(student)" href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
             </div>
           </div>
         </div>
