@@ -1,9 +1,10 @@
-import { Course } from './../../../models/course';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CourseService } from 'src/app/services/course.service';
-import { StudentService } from './../../../services/student.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+import { CourseService } from 'src/app/services/course.service';
+import { Course } from './../../../models/course';
+import { StudentService } from './../../../services/student.service';
 
 @Component({
   selector: 'app-student-form',
@@ -39,24 +40,24 @@ export class StudentFormComponent implements OnInit {
     }
   }
 
-  getCourses() {
+  getCourses(): void {
     this.courseService.getCourses().subscribe((res) => {
       this.courses = res;
     });
   }
 
-  onSubmit() {
+  onSubmit(): void {
     this.studentId ? this.editStudent() : this.addStudent();
   }
 
-  addStudent() {
+  addStudent(): void {
     this.studentService.addStudent(this.studentForm.value).subscribe((res) => {
       alert('Student Added Successfully!');
       this.router.navigate(['/students']);
     });
   }
 
-  getStudent() {
+  getStudent(): void {
     this.studentService.getStudent(this.studentId).subscribe({
       next: (student: any) => {
         this.studentForm.setValue({
@@ -71,8 +72,11 @@ export class StudentFormComponent implements OnInit {
     });
   }
 
-  editStudent() {
-    this.studentService.editStudent(this.studentForm.value, this.studentId).subscribe((res) => {
+  editStudent(): void {
+    const courseId = +this.studentForm.value.courseId;
+    const student = this.studentForm.value;
+    student.courseId = courseId;
+    this.studentService.editStudent(student, this.studentId).subscribe((res) => {
       if (res) {
         alert('Student Updated Successfully!');
         this.router.navigate(['/students']);

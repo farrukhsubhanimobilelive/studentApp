@@ -6,16 +6,16 @@
           <h1 class="mb-5">Course Detail</h1>
         </div>
         <div class="col-12">
-          <div class="course py-3">
-            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: Basic JavaScript</h2>
-            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: 1 month</h3>
+          <div class="course py-3" *ngIf="course">
+            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: {{ course.name }}</h2>
+            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: {{ course.duration }}</h3>
             <ul class="d-flex justify-content-between m-0 py-3 list-unstyled">
-              <li>Fee: 5000</li>
-              <li>Start Date: 01/03/2020</li>
+              <li>Fee: {{ course.fee }}</li>
+              <li>Start Date: {{ course.startDate }}</li>
             </ul>
             <div class="d-flex justify-content-between border-top pt-4">
-              <a routerLink="/courses/edit-course" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
-              <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
+              <a routerLink="/courses/edit-course/{{ course.id }}" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
+              <a (click)="deleteCourse(course)" href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
             </div>
           </div>
         </div>

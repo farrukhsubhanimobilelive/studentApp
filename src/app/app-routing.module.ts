@@ -15,9 +15,9 @@ const routes: Routes = [
   { path: 'students/edit-student/:id', component: StudentFormComponent },
 
   { path: 'courses', component: CoursesComponent },
-  { path: 'courses/course-detail', component: CourseDetailComponent },
+  { path: 'courses/course-detail/:id', component: CourseDetailComponent },
   { path: 'courses/add-course', component: CourseFormComponent },
-  { path: 'courses/edit-course', component: CourseFormComponent },
+  { path: 'courses/edit-course/:id', component: CourseFormComponent },
   { path: '', redirectTo: '/students', pathMatch: 'full' }
 ];
 

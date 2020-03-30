@@ -6,48 +6,18 @@
           <h1 class="m-0 float-left">All Courses</h1>
           <a routerLink="/courses/add-course" href="javascript:void(0);" class="btn btn-primary float-right">Add Course</a>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses">
           <div class="course py-3">
-            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: Basic JavaScript</h2>
-            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: 1 month</h3>
+            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: {{ course.name }}</h2>
+            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: {{ course.duration }}</h3>
             <ul class="d-flex justify-content-between m-0 py-3 list-unstyled">
-              <li>Fee: 5000</li>
-              <li>Start Date: 01/03/2020</li>
+              <li>Fee: {{ course.fee }}</li>
+              <li>Start Date: {{ course.startDate }}</li>
             </ul>
             <div class="d-flex justify-content-between border-top pt-4">
-              <a routerLink="/courses/course-detail" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa-eye">View</a>
-              <a routerLink="/courses/edit-course" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
-              <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
-          <div class="course py-3">
-            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: Advanced JavaScript</h2>
-            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: 2 months</h3>
-            <ul class="d-flex justify-content-between m-0 py-3 list-unstyled">
-              <li>Fee: 8000</li>
-              <li>Start Date: 01/03/2020</li>
-            </ul>
-            <div class="d-flex justify-content-between border-top pt-4">
-              <a routerLink="/courses/course-detail" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa-eye">View</a>
-              <a routerLink="/courses/edit-course" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
-              <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4">
-          <div class="course py-3">
-            <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: Angular 2 Ninja</h2>
-            <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: 2 months</h3>
-            <ul class="d-flex justify-content-between m-0 py-3 list-unstyled">
-              <li>Fee: 10,000</li>
-              <li>Start Date: 01/03/2020</li>
-            </ul>
-            <div class="d-flex justify-content-between border-top pt-4">
-              <a routerLink="/courses/course-detail" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa-eye">View</a>
-              <a routerLink="/courses/edit-course" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
-              <a href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
+              <a routerLink="/courses/course-detail/{{ course.id }}" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa-eye">View</a>
+              <a routerLink="/courses/edit-course/{{ course.id }}" href="javascript:void(0);" class="btn btn-sm btn-outline-primary fa fa-pencil">Edit</a>
+              <a (click)="deleteCourse(course)" href="javascript:void(0);" class="btn btn-sm btn-outline-danger fas fa-cross">Delete</a>
             </div>
           </div>
         </div>

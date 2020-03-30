@@ -34,7 +34,10 @@ export class StudentService {
   }
 
   editStudent(student: any, studentId: number): Observable<Student> {
+    /* const courseId = Number(student.courseId);
+    student.courseId = courseId; */
     this.url = `${API_URL}/students/${studentId}`;
+    console.log(student);
     return this.http.put<Student>(this.url, student);
   }
 }

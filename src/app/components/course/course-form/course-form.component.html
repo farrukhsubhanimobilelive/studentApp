@@ -3,37 +3,56 @@
     <div class="courses">
       <div class="row">
         <div class="col-12 pb-5">
-          <h1 class="m-0">Add Course</h1>
+          <h1 class="m-0">{{ courseId ? 'Edit Course' : 'Add Course' }}</h1>
+          <p class="m-0">Form Status: {{ courseForm.status }}</p>
+          <p class="m-0">Form Values: {{ courseForm.value | json }}</p>
         </div>
         <div class="col-12">
-          <form class="row">
+          <form class="row" [formGroup]="courseForm" #ngForm="ngForm" (ngSubmit)="onSubmit()">
             <div class="col-6">
-              <div class="form-group">
+              <div class="form-group" formGroupName="courseForm">
                 <label for="courseName">Name</label>
-                <input type="text" name="courseName" id="courseName" class="form-control">
+                <input type="text" formControlName="name" class="form-control" required>
+                <span class="text-danger d-block" *ngIf="ngForm.submitted && courseForm.get('name').invalid">please provide the Course Name</span>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="courseDuration">Duration</label>
-                <input type="text" name="courseDuration" id="courseDuration" class="form-control">
+                <input type="text" formControlName="duration" name="courseDuration" id="courseDuration" class="form-control" required>
+                <span
+                  class="text-danger d-block"
+                  *ngIf="!courseForm.get('duration').value && courseForm.get('duration').touched">
+                    please provide the Course Duration
+                </span>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="courseFee">Fee</label>
-                <input type="text" name="courseFee" id="courseFee" class="form-control">
+                <input type="text" formControlName="fee" name="courseFee" id="courseFee" class="form-control" required>
+                <span
+                  class="text-danger d-block"
+                  *ngIf="!courseForm.get('fee').value && courseForm.get('fee').touched">
+                    please provide the Course Fee
+                </span>
               </div>
             </div>
             <div class="col-6">
               <div class="form-group">
                 <label for="startDate">Start Date</label>
-                <input type="text" name="startDate" id="startDate" class="form-control">
+                <input type="text" formControlName="startDate" name="startDate" id="startDate" class="form-control" required>
+                <span
+                  class="text-danger d-block"
+                  *ngIf="!courseForm.get('startDate').value && courseForm.get('startDate').touched">
+                    please provide the Course Start Date
+                </span>
               </div>
             </div>
             <div class="col-12">
               <div class="form-group d-flex justify-content-center">
-                <button type="submit" class="btn btn-block btn-outline-success">Add Course</button>
+                <button type="submit" class="btn btn-block btn-outline-success">{{ courseId ? 'Save Course' : 'Add Course' }}</button>
+                <!-- <button type="submit" class="btn btn-block btn-outline-success" [disabled]="!courseForm.valid">{{ courseId ? 'Save Course' : 'Add Course' }}</button> -->
               </div>
             </div>
           </form>
