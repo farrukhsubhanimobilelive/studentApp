@@ -1,0 +1,62 @@
+Could not resolve ESLint extension 'plugin:import/errors'.: Error: Cannot find module '/Users/farrukh/Public/Projects/Other/studentApp/plugin:import/errors'
+Require stack:
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/cli/main.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/bin/tslint-to-eslint-config
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:794:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:687:27)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js:21:64
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+
+
+Could not resolve ESLint extension 'plugin:import/warnings'.: Error: Cannot find module '/Users/farrukh/Public/Projects/Other/studentApp/plugin:import/warnings'
+Require stack:
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/cli/main.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/bin/tslint-to-eslint-config
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:794:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:687:27)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js:21:64
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+
+
+Could not resolve ESLint extension 'plugin:import/typescript'.: Error: Cannot find module '/Users/farrukh/Public/Projects/Other/studentApp/plugin:import/typescript'
+Require stack:
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/cli/main.js
+- /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/bin/tslint-to-eslint-config
+    at Function.Module._resolveFilename (internal/modules/cjs/loader.js:794:15)
+    at Function.Module._load (internal/modules/cjs/loader.js:687:27)
+    at Module.require (internal/modules/cjs/loader.js:849:19)
+    at require (internal/modules/cjs/helpers.js:74:18)
+    at /Users/farrukh/.npm/_npx/83693/lib/node_modules/tslint-to-eslint-config/src/adapters/nativeImporter.js:21:64
+    at processTicksAndRejections (internal/process/task_queues.js:93:5)
+
+
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "component-class-suffix"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "component-selector"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "contextual-lifecycle"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "directive-class-suffix"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "directive-selector"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "import-spacing"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "jsdoc-format"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-conflicting-lifecycle"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-host-metadata-property"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-input-rename"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-inputs-metadata-property"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-output-native"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-output-on-prefix"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-output-rename"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-outputs-metadata-property"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "no-reference-import"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "one-line"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "template-banana-in-box"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "template-no-negated-async"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "use-lifecycle-interface"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "use-pipe-transform-interface"[39m
+[33mtslint-to-eslint-config does not know the ESLint equivalent for TSLint's "whitespace"[39m
+[33m[39m

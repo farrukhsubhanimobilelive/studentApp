@@ -14,6 +14,13 @@ export class CourseFormComponent implements OnInit {
   courseId: number;
   course: Course[] = [];
 
+  courseForm = this.fb.group({
+    name: ['', Validators.required],
+    duration: ['', Validators.required],
+    fee: ['', Validators.required],
+    startDate: ['', Validators.required]
+  });
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -21,12 +28,6 @@ export class CourseFormComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
-  courseForm = this.fb.group({
-    name: ['', Validators.required],
-    duration: ['', Validators.required],
-    fee: ['', Validators.required],
-    startDate: ['', Validators.required]
-  });
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id')) {
@@ -40,6 +41,9 @@ export class CourseFormComponent implements OnInit {
   }
 
   addCourse(): void {
+    if(this.courseForm.status === 'INVALID') {
+      this.courseForm.markAllAsTouched();
+    }
     this.courseService.addCourse(this.courseForm.value).subscribe((res) => {
       console.log(res);
       alert('Course Added Successfully!');

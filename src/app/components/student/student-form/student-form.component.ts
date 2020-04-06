@@ -51,6 +51,9 @@ export class StudentFormComponent implements OnInit {
   }
 
   addStudent(): void {
+    if(this.studentForm.status === 'INVALID') {
+      this.studentForm.markAllAsTouched();
+    }
     this.studentService.addStudent(this.studentForm.value).subscribe((res) => {
       alert('Student Added Successfully!');
       this.router.navigate(['/students']);
