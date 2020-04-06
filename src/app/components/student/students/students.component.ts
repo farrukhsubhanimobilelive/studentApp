@@ -10,12 +10,21 @@ import { Student } from '../../../models/student';
   styleUrls: ['./students.component.scss']
 })
 export class StudentsComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize =9;
+  items = [];
+
   students: Student[];
 
   constructor(
     private studentService: StudentService,
     private route: Router
-  ) { }
+  ) {
+    for(let i = 1; i <= 100; i++){
+      this.items.push({Name: 'Shop ' + i});
+    }
+  }
 
   ngOnInit(): void {
     this.getStudents();
@@ -36,5 +45,4 @@ export class StudentsComponent implements OnInit {
       this.getStudents();
     });
   }
-
 }
