@@ -45,7 +45,13 @@
             <div class="col-6">
               <div class="form-group">
                 <label for="startDate">Start Date</label>
-                <input type="date" formControlName="startDate" name="startDate" id="startDate" class="form-control" required>
+                <div class="input-group">
+                  <input class="form-control" formControlName="startDate" name="d2" ngbDatepicker #d2="ngbDatepicker" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary calendar" (click)="d2.toggle()" type="button"></button>
+                  </div>
+                </div>
+                <!-- <input type="date" formControlName="startDate" name="startDate" id="startDate" class="form-control" required> -->
                 <span
                   class="text-danger"
                   *ngIf="!courseForm.get('startDate').value && courseForm.get('startDate').touched">

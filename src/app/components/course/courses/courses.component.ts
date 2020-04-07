@@ -9,20 +9,14 @@ import { Course } from 'src/app/models/course';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
-  name = 'Angular';
   page = 1;
   pageSize = 6;
-  items = [];
 
   courses;
 
   constructor(
     private courseService: CourseService
-  ) {
-    for(let i = 1; i <= 100; i++){
-      this.items.push({Name: 'Shop ' + i});
-    }
-  }
+  ) { }
 
   ngOnInit(): void {
     this.getCourses();
@@ -31,11 +25,12 @@ export class CoursesComponent implements OnInit {
   getCourses(): void {
     this.courseService.getCourses().subscribe((res: any) => {
       this.courses = res;
+      console.log(this.courses);
     });
   }
 
   deleteCourse(course: Course): void {
-    this.courseService.deleteCourse(course.id).subscribe((res: any) => {
+    this.courseService.deleteCourse(course.id).subscribe(() => {
       alert(`Course ${course.name} Deleted Successfully!`);
       this.getCourses();
     });

@@ -1,14 +1,67 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import {NgbCalendar, NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
 
 import { Course } from 'src/app/models/course';
 import { CourseService } from './../../../services/course.service';
 
+/**
+ * This Service handles how the date is represented in scripts i.e. ngModel.
+ */
+@Injectable()
+export class CustomAdapter extends NgbDateAdapter<string> {
+  readonly DELIMITER = '/';
+  fromModel(value: string | null): NgbDateStruct | null {
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      return {
+        month : parseInt(date[0], 10),
+        day : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  toModel(date: NgbDateStruct | null): string | null {
+    return date ? date.month + this.DELIMITER + date.day + this.DELIMITER + date.year : null;
+  }
+}
+
+/**
+ * This Service handles how the date is rendered and parsed from keyboard i.e. in the bound input field.
+ */
+@Injectable()
+export class CustomDateParserFormatter extends NgbDateParserFormatter {
+
+  readonly DELIMITER = '/';
+
+  parse(value: string): NgbDateStruct | null {
+    if (value) {
+      let date = value.split(this.DELIMITER);
+      return {
+        month : parseInt(date[0], 10),
+        day : parseInt(date[1], 10),
+        year : parseInt(date[2], 10)
+      };
+    }
+    return null;
+  }
+
+  format(date: NgbDateStruct | null): string {
+    return date ? date.month + this.DELIMITER + date.day + this.DELIMITER + date.year : '';
+  }
+}
+
 @Component({
   selector: 'app-course-form',
   templateUrl: './course-form.component.html',
-  styleUrls: ['./course-form.component.scss']
+  styleUrls: ['./course-form.component.scss'],
+  providers: [
+    {provide: NgbDateAdapter, useClass: CustomAdapter},
+    {provide: NgbDateParserFormatter, useClass: CustomDateParserFormatter}
+  ]
 })
 export class CourseFormComponent implements OnInit {
   courseId: number;
@@ -25,15 +78,20 @@ export class CourseFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private courseService: CourseService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private ngbCalendar: NgbCalendar,
+    private dateAdapter: NgbDateAdapter<string>
   ) {}
-
 
   ngOnInit(): void {
     if (this.route.snapshot.paramMap.get('id')) {
       this.courseId = +this.route.snapshot.paramMap.get('id');
       this.getCourse();
     }
+  }
+
+  get today() {
+    return this.dateAdapter.toModel(this.ngbCalendar.getToday())!;
   }
 
   onSubmit(): void {
