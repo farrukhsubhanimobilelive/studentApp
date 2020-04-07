@@ -9,8 +9,20 @@ import { Course } from 'src/app/models/course';
   styleUrls: ['./courses.component.scss']
 })
 export class CoursesComponent implements OnInit {
+  name = 'Angular';
+  page = 1;
+  pageSize = 6;
+  items = [];
+
   courses;
-  constructor( private courseService: CourseService ) { }
+
+  constructor(
+    private courseService: CourseService
+  ) {
+    for(let i = 1; i <= 100; i++){
+      this.items.push({Name: 'Shop ' + i});
+    }
+  }
 
   ngOnInit(): void {
     this.getCourses();

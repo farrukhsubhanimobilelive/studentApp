@@ -6,7 +6,7 @@
           <h1 class="m-0 float-left">All Courses</h1>
           <a routerLink="/courses/add-course" href="javascript:void(0);" class="btn btn-primary float-right">Add Course</a>
         </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4" *ngFor="let course of courses | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
           <div class="course py-3">
             <h2 class="m-0 text-success" style="font-size: 1.2rem;">Name: {{ course.name }}</h2>
             <h3 class="m-0 text-secondary border-bottom pb-3 text-danger" style="font-size: 1rem;">Duration: {{ course.duration }}</h3>
@@ -22,6 +22,7 @@
           </div>
         </div>
       </div>
+      <ngb-pagination class="ngb-pagination d-flex justify-content-center pt-5" [collectionSize]="items.length" [(page)]="page" [maxSize]="2" [rotate]="false" [ellipses]="true" [boundaryLinks]="false"></ngb-pagination>
     </div>
   </div>
 </main>
